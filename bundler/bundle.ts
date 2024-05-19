@@ -5,9 +5,9 @@ import esbuildPluginTsc from "esbuild-plugin-tsc";
 const getEsbuildOptions = (): esbuild.BuildOptions => {
   return {
     entryPoints: ["src/middleware-queueit-connector.ts"],
-    outfile: "dist/index.js",
+    outfile: "dist/middleware-queueit-connector.js",
     bundle: true,
-    minify: true,
+    minify: false,
     platform: "node",
     target: ["node20"],
     format: "esm",
