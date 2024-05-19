@@ -10,5 +10,14 @@
     "connector"
   ],
   "author": "Adam Jakab <adam@jakab.pro>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@queue-it/connector-javascript": "^4.3.0",
+    "@queue-it/queue-token": "^1.0.4",
+    "jssha": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "next": "^13.5.6"
+  }
 }
