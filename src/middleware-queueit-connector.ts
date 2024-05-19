@@ -34,22 +34,6 @@ async function HandleNextjsRequest(
   try {
     var integrationsConfigString = await getInlineIntegrationConfigString();
 
-    // const customerId = QueueIT_Settings.customerId;
-    // const secretKey = QueueIT_Settings.secretKey;
-    // const apiKey = QueueIT_Settings.apiKey;
-    // const enqueueTokenEnabled = QueueIT_Settings.isEnqueueTokenEnabled;
-    // const enqueueTokenValidityTime = QueueIT_Settings.enqueueTokenValidityTime;
-    // const enqueueTokenKeyEnabled = QueueIT_Settings.isEnqueueTokenKeyEnabled;
-    // const requestBodyCheckEnabled = QueueIT_Settings.isRequestBodyCheckEnabled;
-
-    // const settings = {
-    //   customerId,
-    //   secretKey,
-    //   enqueueTokenEnabled,
-    //   enqueueTokenValidityTime,
-    //   enqueueTokenKeyEnabled,
-    // };
-
     const requestBodyString: string = QueueIT_Settings.isRequestBodyCheckEnabled
       ? await request.text()
       : "";

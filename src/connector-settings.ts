@@ -1,4 +1,3 @@
-//@TODO: post body config missing
 type ConnectorSettings = {
   customerId: string;
   secretKey: string;
