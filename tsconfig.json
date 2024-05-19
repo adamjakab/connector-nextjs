@@ -1,0 +1,60 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true
+  },
+  "include": ["/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+/*
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "ESNext",
+        "lib": ["esnext", "dom"],
+        "allowJs": false,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "./",
+        "declaration": true,
+        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "incremental": true,
+        "moduleResolution": "node",
+        "noFallthroughCasesInSwitch": false,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noImplicitReturns": true,
+        "outDir": "./.build",
+        "preserveConstEnums": true,
+        "removeComments": true,
+        "resolveJsonModule": true,
+        "rootDir": "./",
+        "skipLibCheck": true,
+        "inlineSourceMap": true,
+        "inlineSources": true,
+        "strict": true,
+        "alwaysStrict": true,
+        "strictBindCallApply": false,
+        "strictNullChecks": false,
+        "strictPropertyInitialization": false,
+        "typeRoots": ["./node_modules/@types", "src/dataprovider/types"],
+        "paths": {
+            "@temdashboard/*": ["src/*"]
+        }
+    },
+    "exclude": ["node_modules", "dist", "cdk.out"]
+}
+*/
