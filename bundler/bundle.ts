@@ -7,7 +7,7 @@ const getEsbuildOptions = (): esbuild.BuildOptions => {
     entryPoints: ["src/index.ts"],
     outfile: "dist/index.js",
     bundle: true,
-    minify: false,
+    minify: true,
     platform: "node",
     target: ["node20"],
     format: "esm",
@@ -21,8 +21,8 @@ const getEsbuildOptions = (): esbuild.BuildOptions => {
     ],
     /** Only the src files will be bundled (not the dependencies)*/
     external: ["./node_modules/*"],
-    metafile: true,
-    sourcemap: true,
+    metafile: false,
+    sourcemap: false,
   };
 };
 
