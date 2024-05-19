@@ -2,7 +2,7 @@ import { KnownUser } from "@queue-it/connector-javascript";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import NextjsHttpContextProvider from "../provider/NextjsHttpContextProvider";
-import type ConnectorSettings from "../type/connector-settings";
+import type connectorSettings from "../type/connector-settings";
 
 //@FIXME: How do we get config?
 const getInlineIntegrationConfigString = async () => {
@@ -11,7 +11,7 @@ const getInlineIntegrationConfigString = async () => {
 };
 
 /** QUEUE-IT SECRETS & SETTINGS FROM .env */
-const QueueIT_Settings: ConnectorSettings = {
+const QueueIT_Settings: connectorSettings = {
   customerId: process.env.QUEUEIT_CUSTOMER_ID as string,
   secretKey: process.env.QUEUEIT_SECRET_KEY as string,
   apiKey: process.env.QUEUEIT_API_KEY as string,
