@@ -1,8 +1,8 @@
 import { KnownUser } from "@queue-it/connector-javascript";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import NextjsHttpContextProvider from "./NextjsHttpContextProvider";
-import ConnectorSettings from "./connector-settings";
+import NextjsHttpContextProvider from "../provider/NextjsHttpContextProvider";
+import type ConnectorSettings from "../type/connector-settings";
 
 //@FIXME: How do we get config?
 const getInlineIntegrationConfigString = async () => {

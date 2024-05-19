@@ -2,11 +2,10 @@
   "name": "connector-nextjs",
   "version": "1.3.0",
   "description": "NextJs specific connector.",
-  "main": "dist/middleware-queueit-connector.js",
+  "main": "dist/index.js",
   "scripts": {
     "versionbump": "npm version minor",
-    "build_disabled": "tsc && ts-node bundler/bundle.ts",
-    "build": "tsc",
+    "build": "tsc && ts-node bundler/bundle.ts",
     "rebuild": "rm -rf ./dist/ && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
