@@ -1,3 +1,4 @@
 src/
 bundler/
 tsconfig.json
+dist/tsconfig.tsbuildinfo
