@@ -1,0 +1,14 @@
+{
+  "name": "connector-nextjs",
+  "version": "1.0.0",
+  "description": "NextJs specific connector.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "connector"
+  ],
+  "author": "Adam Jakab <adam@jakab.pro>",
+  "license": "MIT"
+}
