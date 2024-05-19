@@ -7,7 +7,7 @@ const getEsbuildOptions = (): esbuild.BuildOptions => {
     entryPoints: ["src/index.ts"],
     outfile: "dist/index.js",
     bundle: true,
-    minify: true,
+    minify: false,
     platform: "node",
     target: ["node20"],
     format: "esm",
@@ -20,7 +20,13 @@ const getEsbuildOptions = (): esbuild.BuildOptions => {
       }),
     ],
     /** Only the src files will be bundled (not the dependencies)*/
-    external: ["./node_modules/*"],
+    // external: ["./node_modules/*"], - this is a no-go: @see: https://github.com/evanw/esbuild/issues/619
+    external: [
+      "next",
+      "@queue-it/connector-javascript",
+      "@queue-it/queue-token",
+      "jssha",
+    ],
     metafile: false,
     sourcemap: false,
   };
