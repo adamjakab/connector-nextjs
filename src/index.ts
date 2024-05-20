@@ -1,4 +1,4 @@
-import HandleNextjsRequest from "./connector/middleware-queueit-connector";
-import type connectorSettings from "./type/connector-settings";
+import queueitHandleNextjsRequest from "./connector/queueit-middleware-connector";
+import type queueitConnectorSettings from "./type/connector-settings";
 
-export { type connectorSettings, HandleNextjsRequest };
+export { type queueitConnectorSettings, queueitHandleNextjsRequest };

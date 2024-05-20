@@ -2,7 +2,7 @@
  * Queue-it connector configuration settings
  *
  */
-type connectorSettings = {
+type queueitConnectorSettings = {
   /**
    * @property {string} customerId - The ID of the account assigned to you in the GO Platform.
    */
@@ -37,6 +37,11 @@ type connectorSettings = {
    * @property {boolean} isRequestBodyCheckEnabled - If enabled, the connector will also use the request body to match the triggers.
    */
   isRequestBodyCheckEnabled: boolean;
+
+  /**
+   * @property {string} integrationConfiguration - The stringified Integration Configuration.
+   */
+  integrationConfiguration: string;
 };
 
-export default connectorSettings;
+export default queueitConnectorSettings;

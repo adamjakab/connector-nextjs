@@ -2,39 +2,15 @@ import { KnownUser } from "@queue-it/connector-javascript";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import NextjsHttpContextProvider from "../provider/NextjsHttpContextProvider";
-import type connectorSettings from "../type/connector-settings";
+import type queueitConnectorSettings from "../type/connector-settings";
 
-//@FIXME: How do we get config?
-const getInlineIntegrationConfigString = async () => {
-  const integrationsConfig = {};
-  return JSON.stringify(integrationsConfig);
-};
-
-/** QUEUE-IT SECRETS & SETTINGS FROM .env */
-const QueueIT_Settings: connectorSettings = {
-  customerId: process.env.QUEUEIT_CUSTOMER_ID as string,
-  secretKey: process.env.QUEUEIT_SECRET_KEY as string,
-  apiKey: process.env.QUEUEIT_API_KEY as string,
-  isEnqueueTokenEnabled:
-    parseInt(process.env.QUEUEIT_ENQT_ENABLED as string) === 1,
-  enqueueTokenValidityTime: parseInt(
-    process.env.QUEUEIT_ENQT_VALIDITY_TIME as string
-  ),
-  isEnqueueTokenKeyEnabled:
-    parseInt(process.env.QUEUEIT_ENQT_KEY_ENABLED as string) === 1,
-
-  isRequestBodyCheckEnabled:
-    parseInt(process.env.QUEUEIT_REQ_BODY_ENABLED as string) === 1,
-};
-
-async function HandleNextjsRequest(
+async function queueitHandleNextjsRequest(
   request: NextRequest,
-  response: NextResponse
+  response: NextResponse,
+  settings: queueitConnectorSettings
 ) {
   try {
-    var integrationsConfigString = await getInlineIntegrationConfigString();
-
-    const requestBodyString: string = QueueIT_Settings.isRequestBodyCheckEnabled
+    const requestBodyString: string = settings.isRequestBodyCheckEnabled
       ? await request.text()
       : "";
 
@@ -44,13 +20,13 @@ async function HandleNextjsRequest(
       requestBodyString
     );
 
-    if (QueueIT_Settings.isEnqueueTokenEnabled) {
+    if (settings.isEnqueueTokenEnabled) {
       httpContextProvider.setEnqueueTokenProvider(
-        QueueIT_Settings.customerId,
-        QueueIT_Settings.secretKey,
-        QueueIT_Settings.enqueueTokenValidityTime,
+        settings.customerId,
+        settings.secretKey,
+        settings.enqueueTokenValidityTime,
         request.ip || "",
-        QueueIT_Settings.isEnqueueTokenKeyEnabled
+        settings.isEnqueueTokenKeyEnabled
       );
     }
 
@@ -61,6 +37,7 @@ async function HandleNextjsRequest(
     request.nextUrl.searchParams.delete(KnownUser.QueueITTokenKey);
     var requestUrlWithoutToken =
       httpContextProvider._httpRequest.getAbsoluteUri();
+
     // The requestUrlWithoutToken is used to match Triggers and as the Target url (where to return the users to).
     // It is therefor important that this is exactly the url of the users browsers. So, if your webserver is
     // behind e.g. a load balancer that modifies the host name or port, reformat requestUrlWithoutToken before proceeding.
@@ -68,11 +45,11 @@ async function HandleNextjsRequest(
     var validationResult = await KnownUser.validateRequestByIntegrationConfig(
       requestUrlWithoutToken,
       queueitToken,
-      integrationsConfigString,
-      QueueIT_Settings.customerId,
-      QueueIT_Settings.secretKey,
+      settings.integrationConfiguration,
+      settings.customerId,
+      settings.secretKey,
       httpContextProvider,
-      QueueIT_Settings.apiKey
+      settings.apiKey
     );
 
     if (validationResult.doRedirect()) {
@@ -142,4 +119,4 @@ async function HandleNextjsRequest(
   }
 }
 
-export default HandleNextjsRequest;
+export default queueitHandleNextjsRequest;
