@@ -7,7 +7,7 @@ const getEsbuildOptions = (): esbuild.BuildOptions => {
     entryPoints: ["src/index.ts"],
     outfile: "dist/index.js",
     bundle: true,
-    minify: false,
+    minify: true,
     platform: "node",
     target: ["node20"],
     format: "esm",
